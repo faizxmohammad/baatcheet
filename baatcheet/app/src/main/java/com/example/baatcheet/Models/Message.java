@@ -3,7 +3,7 @@ package com.example.baatcheet.Models;
 public class Message {
     private String messageId , message , senderId;
     private long timeStamp;
-    private int feeling = -1;
+//    private int feeling = -1;
     public String imageUrl;
 
 
@@ -33,10 +33,10 @@ public class Message {
         this.timeStamp = timeStamp;
     }
 
-    public void setFeeling(int feeling) {
-        this.feeling = feeling;
-
-    }
+//    public void setFeeling(int feeling) {
+//        this.feeling = feeling;
+//
+//    }
 
     public String getImageUrl() {
         return imageUrl;
@@ -62,9 +62,9 @@ public class Message {
         return timeStamp;
     }
 
-    public int getFeeling() {
-        return feeling;
-    }
+//    public int getFeeling() {
+//        return feeling;
+//    }
 
 
 }
