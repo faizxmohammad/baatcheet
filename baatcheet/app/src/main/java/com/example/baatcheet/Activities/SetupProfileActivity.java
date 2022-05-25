@@ -88,7 +88,7 @@ public class SetupProfileActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
-                                    public void onSuccess(Uri uri) {
+                                    public void onSuccess(@NonNull Uri uri) {
                                         String imageUrl = uri.toString();
                                         String uid = auth.getUid();
                                         String phone = auth.getCurrentUser().getPhoneNumber();
