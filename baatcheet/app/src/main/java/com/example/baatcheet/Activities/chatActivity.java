@@ -88,7 +88,7 @@ public class chatActivity extends AppCompatActivity {
 
                 HashMap<String, Object> lastMsgObj = new HashMap<>();
                 lastMsgObj.put("lastMsg" , message.getMessage());
-                lastMsgObj.put("lastMsgTime" , date.getTime());
+                lastMsgObj.put("msgTime" , date.getTime());
 
                 database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);
                 database.getReference().child("chats").child(receiverRoom).updateChildren(lastMsgObj);

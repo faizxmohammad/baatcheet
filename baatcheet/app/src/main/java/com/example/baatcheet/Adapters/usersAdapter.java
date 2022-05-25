@@ -2,11 +2,13 @@ package com.example.baatcheet.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -21,8 +23,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.FileReader;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class usersAdapter extends RecyclerView.Adapter<usersAdapter.UsersViewHolder>{
     Context context;
     ArrayList<User> users;
@@ -31,6 +38,9 @@ public class usersAdapter extends RecyclerView.Adapter<usersAdapter.UsersViewHol
         this.users = users;
     }
 
+
+
+    private static  DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("dd/mm/yyyy hh:mm:a");
     @NonNull
     @Override
     public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,13 +61,13 @@ public class usersAdapter extends RecyclerView.Adapter<usersAdapter.UsersViewHol
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+
                                                 if(snapshot.exists()) {
                                                     String lastMsg = snapshot.child("lastMsg").getValue(String.class);
-                                                    long time = snapshot.child("lastMsgTime").getValue(Long.class);
-
-                                                    holder.binding.lastMessage.setText(lastMsg);
+                                                    Long time = snapshot.child("msgTime").getValue(Long.class);
+                                                    holder.binding.lastMsg.setText(lastMsg);
                                                 }else{
-                                                    holder.binding.lastMessage.setText("Tap to chat");
+                                                    holder.binding.lastMsg.setText("Tap to chat");
                                                 }
                                             }
 
