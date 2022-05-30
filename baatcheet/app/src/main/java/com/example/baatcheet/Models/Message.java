@@ -1,10 +1,9 @@
 package com.example.baatcheet.Models;
-
+import com.example.baatcheet.Models.Status;
 public class Message {
-    private String messageId , message , senderId;
+    private String messageId , message , senderId , imageUrl;
     private long timeStamp;
 //    private int feeling = -1;
-    public String imageUrl;
 
 
     public Message() {

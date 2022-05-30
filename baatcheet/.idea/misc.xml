@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/drawable/circle_bg - Copy.xml" value="0.17" />
+        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/drawable/circle_bg.xml" value="0.1535" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/drawable/circle_green.xml" value="0.17" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/drawable/ic_send.xml" value="0.17" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/drawable/ic_status.xml" value="0.1" />
@@ -12,14 +13,19 @@
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/drawable/textbox_outline.xml" value="0.1785" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/font/lobster_italic.xml" value="0.2046875" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/font/roboto_light.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/activity_chat.xml" value="0.16666666666666666" />
+        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/activity_chat.xml" value="0.3333333333333333" />
+        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/activity_group_chat.xml" value="0.16145833333333334" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/activity_otpactivity.xml" value="0.22" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/activity_phone_number.xml" value="0.25" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/activity_setup_profile.xml" value="0.3333333333333333" />
+        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/activity_show_story.xml" value="0.17552083333333332" />
+        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/demo_layout.xml" value="0.3333333333333333" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/item_receive.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/item_receive_group.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/item_sent.xml" value="0.3333333333333333" />
-        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/item_status.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/item_sent_group.xml" value="0.4466666666666667" />
+        <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/item_status.xml" value="0.4466666666666667" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/layout/row_conversation.xml" value="0.4466666666666667" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/menu/menu.xml" value="0.17552083333333332" />
         <entry key="..\:/AndroidStudioApps/baatcheet/app/src/main/res/menu/top_menu.xml" value="0.17552083333333332" />
