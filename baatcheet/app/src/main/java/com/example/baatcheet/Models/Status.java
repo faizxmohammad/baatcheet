@@ -1,8 +1,11 @@
 package com.example.baatcheet.Models;
-
+import com.example.baatcheet.Models.Message;
 public class Status {
-    private String imageUrl;
+    private  String imageUrl;
     private long timeStamp;
+
+    public Status() {
+    }
 
     public Status(String imageUrl, long timeStamp) {
         this.imageUrl = imageUrl;

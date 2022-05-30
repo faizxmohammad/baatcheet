@@ -38,6 +38,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.net.StandardSocketOptions;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.setCancelable(false);
 
 
-
         users = new ArrayList<>();
         userStatuses = new ArrayList<>();
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-        UserAdapter = new usersAdapter(this ,users);
+        UserAdapter = new usersAdapter(this, users);
 
         statusAdapter = new TopStatusAdapter(this , userStatuses );
 
@@ -99,16 +99,17 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setAdapter(UserAdapter);
 
 
-
-
+        binding.recyclerView.showShimmerAdapter();
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
-                for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     User user = snapshot1.getValue(User.class);
+                    if(!user.getUid().equals(FirebaseAuth.getInstance().getUid()))
                     users.add(user);
                 }
+                binding.recyclerView.hideShimmerAdapter();
 
                 UserAdapter.notifyDataSetChanged();
             }
@@ -126,16 +127,23 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if(snapshot.exists()){
-
+                    userStatuses.clear();
                     for (DataSnapshot storySnapshot : snapshot.getChildren()){
                         userStatus status = new userStatus();
-//                        status.setLastUpdated(storySnapshot.child("lastUpdated").getValue(Long.class));
+
+
                             status.setName(storySnapshot.child("name").getValue(String.class));
                             status.setProfileImage(storySnapshot.child("profileImage").getValue(String.class));
+//                            status.setLastUpdated(storySnapshot.child("lastUpdated").getValue(Long.class));
 
-
-
+                        ArrayList<Status> statuses = new ArrayList<>();
+                        for(DataSnapshot statusSnapshot : storySnapshot.child("statuses").getChildren()){
+                            Status sampleStatus = statusSnapshot.getValue(Status.class);
+                            statuses.add(sampleStatus);
+                        }
+                        status.setStatuses(statuses);
                         userStatuses.add(status);
+
                     }
                     statusAdapter.notifyDataSetChanged();
                 }
@@ -188,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                                     userStatus userStatus = new userStatus();
                                     userStatus.setName(user.getName());
                                     userStatus.setProfileImage(user.getProfileImage());
-                                    userStatus.setLastUpdated(date.getTime());
+                                    userStatus.setLastUpdated( date.getTime());
 
                                     HashMap<String ,Object > obj = new HashMap<>();
                                     obj.put("name" , userStatus.getName());
@@ -222,8 +230,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        String currentID  = FirebaseAuth.getInstance().getUid() ;
+        database.getReference().child("present").child(currentID).setValue("Online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        String currentID  = FirebaseAuth.getInstance().getUid() ;
+        database.getReference().child("present").child(currentID).setValue("Offline");
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.groups:
+                startActivity(new Intent(MainActivity.this , GroupChatActivity.class));
+                break;
             case R.id.search:
                 Toast.makeText(this,"Search Clicked" , Toast.LENGTH_SHORT).show();
                 break;

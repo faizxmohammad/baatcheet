@@ -79,6 +79,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:itemBackground="@color/grey"
+                android:focusableInTouchMode="true"
                 app:bar_enabled="true"
                 app:bar_height="2dp"
                 app:height="40dp"
