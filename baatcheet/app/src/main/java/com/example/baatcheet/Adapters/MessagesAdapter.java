@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.baatcheet.Models.Message;
 import com.example.baatcheet.R;
+import com.example.baatcheet.databinding.ActivityChatBinding;
 import com.example.baatcheet.databinding.ItemReceiveBinding;
 import com.example.baatcheet.databinding.ItemSentBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +22,8 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
     Context context ;
     ArrayList<Message> messages;
+    ActivityChatBinding binding;
+//    usersAdapter adapter;
 
     final int ITEM_SENT = 1;
     final int ITEM_RECEIVE = 2;
@@ -55,15 +58,19 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         Message message = messages.get(position);
         if(FirebaseAuth.getInstance().getUid().equals(message.getSenderId())){
             return ITEM_SENT;
+
         }else{
             return  ITEM_RECEIVE;
         }
+
+
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Message message = messages.get(position);
+
         if(holder.getClass() == SentViewHolder.class){
             SentViewHolder viewHolder = (SentViewHolder) holder;
 
@@ -76,13 +83,11 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                         .load(message.getImageUrl())
                         .placeholder(R.drawable.placeholder)
                         .into(viewHolder.binding.image);
-
             }
+
             viewHolder.binding.message.setText(message.getMessage());
 
-
-
-        }else {
+        } else {
             ReceiverViewHolder viewHolder = (ReceiverViewHolder) holder;
             if(message.getMessage().equals("photo")){
                 viewHolder.binding.image.setVisibility(View.VISIBLE);
