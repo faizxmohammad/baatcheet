@@ -128,9 +128,6 @@ public class chatActivity extends AppCompatActivity {
         senderRoom = senderUid + receiverUid;
         receiverRoom = receiverUid + senderUid;
 
-
-
-
         database.getReference().child("chats")
                 .child(senderRoom)
                 .child("messages")
@@ -190,7 +187,6 @@ public class chatActivity extends AppCompatActivity {
 
                                             }
                                         });
-
                             }
                         });
             }
